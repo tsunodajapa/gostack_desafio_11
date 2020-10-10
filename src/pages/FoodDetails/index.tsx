@@ -129,11 +129,11 @@ const FoodDetails: React.FC = () => {
     setFoodQuantity(oldQuantity => (oldQuantity > 1 ? oldQuantity - 1 : 1));
   }
 
-  const toggleFavorite = useCallback(async () => {
+  const toggleFavorite = useCallback(() => {
     if (isFavorite) {
-      await api.delete(`favorites/${food.id}`);
+      api.delete(`favorites/${food.id}`);
     } else {
-      await api.post('favorites', food);
+      api.post('favorites', food);
     }
 
     setIsFavorite(!isFavorite);
@@ -145,7 +145,7 @@ const FoodDetails: React.FC = () => {
       return total + extra.quantity * extra.value;
     }, 0);
 
-    return formatValue(food.price * (foodQuantity + extrasValue));
+    return formatValue(foodQuantity * (food.price + extrasValue));
   }, [extras, food, foodQuantity]);
 
   async function handleFinishOrder(): Promise<void> {
