@@ -35,7 +35,7 @@ const Orders: React.FC = () => {
       const response = await api.get<Food[]>('orders');
 
       const formattedData = response.data.map(order => {
-        return {...order, formattedValue: Number(formatValue(order.price)) }
+        return { ...order, formattedValue: Number(formatValue(order.price)) };
       });
 
       setOrders(formattedData);
@@ -43,7 +43,6 @@ const Orders: React.FC = () => {
 
     loadOrders();
   }, []);
-
 
   return (
     <Container>

@@ -35,7 +35,7 @@ const Favorites: React.FC = () => {
       const response = await api.get<Food[]>('favorites');
 
       const formattedData = response.data.map(favorite => {
-        return {...favorite, formattedPrice: formatValue(favorite.price) }
+        return { ...favorite, formattedPrice: formatValue(favorite.price) };
       });
 
       setFavorites(formattedData);
